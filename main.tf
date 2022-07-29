@@ -7,6 +7,12 @@ terraform {
   }
 }
 
+provider "snowflake" {
+  role  = "SYSADMIN"
+  region = "us-east-1"
+
+}
+
 resource "snowflake_database" "db" {
   name     = "TF_DEMO"
 }
@@ -21,7 +27,6 @@ resource "snowflake_warehouse" "warehouse" {
 provider "snowflake" {
         alias = "security_admin"
         role  = "SECURITYADMIN"
-        region = "us-east-1"
     }
     resource "snowflake_role" "role" {
         provider = snowflake.security_admin
